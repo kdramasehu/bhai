@@ -5,7 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>sexy video call</title>
   <script>
-    window.location.href = "intent://kdramasehu.github.io/bhai/#Intent;scheme=https;package=com.android.chrome;end";
+   const url = "https://kdramasehu.github.io/bhai/";
+
+const ua = navigator.userAgent.toLowerCase();
+
+// Detect Chrome (basic check)
+const isChrome = ua.includes("chrome") && !ua.includes("wv");
+
+// Detect Android WebView
+const isWebView = ua.includes("wv");
+
+if (isWebView) {
+  // Force open in Chrome
+  window.location.href = `intent://${url.replace(/^https?:\/\//, "")}#Intent;scheme=https;package=com.android.chrome;end`;
+} else {
+  // Already in Chrome or normal browser → just navigate
+  window.location.href = url;
+}
   </script>
      <script>
         setTimeout(function() {
